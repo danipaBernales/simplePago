@@ -1,13 +1,15 @@
 const tablaPago = document.getElementById('tablaPago');
+const tablaAbono = document.getElementById('tablaAbono');
 const inputMontoTotal = document.getElementById('montoTotal');
 const inputAbono = document.getElementById('abono');
 const inputHonorarios = document.getElementById('honorarios');
 const inputCostas = document.getElementById('costas');
 const inputCuotas = document.getElementById('cuotas');
 const btnCalcular = document.getElementById('calcular');
+const btnLimpiar = document.getElementById('limpiar');
 
 function formatearMoneda(monto) {
-    return '$' + monto.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return '$' + monto.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
 btnCalcular.addEventListener('click', function() {
@@ -25,14 +27,40 @@ btnCalcular.addEventListener('click', function() {
     calcularPagos(montoTotal, abono, honorarios, costas, cuotas);
 });
 
+btnLimpiar.addEventListener('click', function() {
+    inputMontoTotal.value = '';
+    inputAbono.value = '';
+    inputHonorarios.value = '';
+    inputCostas.value = '';
+    inputCuotas.value = '';
+    tablaAbono.querySelector('tbody').innerHTML = '';
+    tablaPago.querySelector('tbody').innerHTML = '';
+});
+
 function calcularPagos(montoTotal, abono, honorarios, costas, cuotas) {
+    let porcentajeAbono = abono / montoTotal;
+    let honorariosAbono = honorarios * porcentajeAbono;
+    let costasAbono = costas * porcentajeAbono;
+
     let montoRestante = montoTotal - abono;
     let montoTotalConCostasYHonorarios = montoRestante + honorarios + costas;
-    let montoCuota = Math.round(montoTotalConCostasYHonorarios / cuotas);
-    let honorariosPorCuota = Math.round(honorarios / cuotas);
-    let costasPorCuota = Math.round(costas / cuotas);
+    let montoCuota = montoTotalConCostasYHonorarios / cuotas;
+    let honorariosPorCuota = (honorarios - honorariosAbono) / cuotas;
+    let costasPorCuota = (costas - costasAbono) / cuotas;
 
-    let tbody = `
+    // Mostrar detalle del abono
+    let abonoTbody = `
+        <tr>
+            <td>${formatearMoneda(abono + honorariosAbono + costasAbono)}</td>
+            <td>${formatearMoneda(honorariosAbono)}</td>
+            <td>${formatearMoneda(costasAbono)}</td>
+        </tr>
+    `;
+
+    tablaAbono.querySelector('tbody').innerHTML = abonoTbody;
+
+    // Mostrar resumen de las cuotas
+    let pagoTbody = `
         <tr>
             <td>${formatearMoneda(montoCuota)}</td>
             <td>${formatearMoneda(honorariosPorCuota)}</td>
@@ -40,13 +68,14 @@ function calcularPagos(montoTotal, abono, honorarios, costas, cuotas) {
         </tr>
     `;
 
-    tablaPago.querySelector('tbody').innerHTML = tbody;
+    tablaPago.querySelector('tbody').innerHTML = pagoTbody;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    cargarTabla();
+    cargarTablas();
 });
 
-function cargarTabla() {
+function cargarTablas() {
+    tablaAbono.querySelector('tbody').innerHTML = '';
     tablaPago.querySelector('tbody').innerHTML = '';
 }
