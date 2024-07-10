@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:900%2C500%2C400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: rgb(87, 87, 87);
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+
+/* NAV */
+nav {
+    width: 100%;
+    background-color: rgb(82, 82, 82);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 30px;
+    box-shadow: 0 6px 5px rgba(0, 0, 0, 0.12);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+nav .logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 40px;
+}
+
+nav ul li a {
+    color: rgb(245, 245, 245);
+    text-decoration: none;
+    padding: 8px 16px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+    color: rgb(255, 173, 50);
+}
+
+body > *:not(nav) {
+    margin-top: 50px;
+}
+
+/* CALCULATOR */
+header {
+    background-color: rgb(53, 53, 53);
+    color: rgb(236, 236, 236);
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+}
+
+header h1 {
+    margin-bottom: 25px;
+    font-size: 25px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 60px;
+}
+
+.input-pair {
+    display: flex;
+    justify-content:flex-start;
+    margin-bottom: 10px;
+}
+
+.input-pair label,
+.input-single label {
+    margin-right: 10px;
+}
+
+.input-pair input,
+.input-single input {
+    flex: 1;
+    margin: 3px;
+    padding: 6px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    width: 280px;
+}
+
+.input-single {
+    width: 280px;
+    margin-bottom: 20px;
+}
+
+.button-group {
+    gap: 10px;
+}
+
+header button {
+    padding: 10px 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    background-color: rgb(255, 173, 50);
+    color: #f2f2f2;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+header button:hover {
+    background-color: rgb(235, 151, 24);
+}
+
+/* RESULTS */
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px;
+    box-shadow: 0 2px 12px rgba(45, 35, 19, 0.75);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.container th, .container td {
+    padding: 15px;
+    text-align: left;
+}
+
+.container th {
+    background-color: #eb9718;
+    color: rgb(48, 48, 48);
+    font-size: 16px;
+}
+
+.container tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.container tr:hover {
+    background-color: #e1e1e1;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    header input {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    header button {
+        width: 100%;
+    }
+}
