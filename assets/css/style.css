@@ -67,13 +67,12 @@ body > *:not(nav) {
 header {
     background-color: rgb(53, 53, 53);
     color: rgb(236, 236, 236);
-    padding: 20px;
+    padding: 20px 80px;
     text-align: center;
     width: 100%;
     max-width: 800px;
     border-radius: 5px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
-    overflow: hidden;
 }
 
 header h1 {
@@ -83,46 +82,51 @@ header h1 {
 
 .input-group {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px 60px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 30px 0;
 }
 
-.input-pair {
+.input-pair, .input-single {
     display: flex;
-    justify-content:flex-start;
+    flex-direction: column;
+    width: calc(50% - 30px);
     margin-bottom: 10px;
+}
+
+.input-single {
+    width: 100%;
 }
 
 .input-pair label,
 .input-single label {
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 .input-pair input,
 .input-single input {
-    flex: 1;
-    margin: 3px;
-    padding: 6px;
+    padding: 10px;
     font-size: 14px;
     border: none;
     border-radius: 5px;
-    width: 280px;
+    width: 100%;
 }
 
-.input-single {
-    width: 280px;
-    margin-bottom: 20px;
+.input-single.short-input {
+    width: 100px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .button-group {
+    display: flex;
+    justify-content: center;
     gap: 10px;
+    margin-top: 20px;
 }
 
 header button {
     padding: 10px 20px;
-    margin-right: 20px;
-    margin-left: 20px;
     background-color: rgb(255, 173, 50);
     color: #f2f2f2;
     border: none;
@@ -139,16 +143,17 @@ header button:hover {
 .container {
     width: 100%;
     max-width: 800px;
-    margin: 20px;
+    margin: 20px 0;
     box-shadow: 0 2px 12px rgba(45, 35, 19, 0.75);
     border-radius: 5px;
     overflow: hidden;
+    background-color: white;
 }
 
 .container table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin: 0;
 }
 
 .container th, .container td {
@@ -172,21 +177,16 @@ header button:hover {
 
 /* Responsive */
 @media (max-width: 600px) {
-    nav ul {
+    .input-group {
         flex-direction: column;
     }
 
-    nav ul li {
-        margin-left: 0;
-        margin-top: 10px;
-    }
-
-    header input {
+    .input-pair, .input-single {
         width: 100%;
-        margin: 5px 0;
     }
 
     header button {
         width: 100%;
+        margin-bottom: 10px;
     }
 }
