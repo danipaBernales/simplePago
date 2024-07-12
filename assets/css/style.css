@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:900%2C500%2C400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-family: "Roboto", sans-serif;
+    letter-spacing: .3px;
 }
 
 body {
@@ -70,14 +71,16 @@ header {
     padding: 35px 35px;
     text-align: center;
     width: 100%;
-    max-width: 420px;
+    max-width: 430px;
     border-radius: 5px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
 }
 
 header h1 {
     margin-bottom: 25px;
-    font-size: 25px;
+    font-size: 33px;
+    font-weight: lighter;
+    letter-spacing: .5px;
 }
 
 .input-group {
@@ -101,6 +104,8 @@ header h1 {
 .input-pair label,
 .input-single label {
     margin-right: 5px;
+    padding-bottom: 1.2px;
+    letter-spacing: .6px;
 }
 
 .input-pair input,
@@ -143,7 +148,7 @@ header button:hover {
 /* RESULTS */
 .container {
     width: 100%;
-    max-width: 420px;
+    max-width: 430px;
     margin: 20px 0;
     box-shadow: 0 2px 12px rgba(45, 35, 19, 0.75);
     border-radius: 5px;
