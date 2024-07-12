@@ -87,7 +87,7 @@ header h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 30px 0;
+    margin: 28px 0;
 }
 
 .input-pair, .input-single {
@@ -115,6 +115,8 @@ header h1 {
     border: none;
     border-radius: 5px;
     width: 100%;
+    outline: none;
+    background-color: #f2f2f2;
 }
 
 .input-single.short-input {
@@ -128,7 +130,6 @@ header h1 {
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin-top: 30px;
 }
 
 header button {
