@@ -12,20 +12,7 @@ function formatearMoneda(monto) {
     return '$' + monto.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
-btnCalcular.addEventListener('click', function() {
-    let montoTotal = parseFloat(inputMontoTotal.value);
-    let abono = parseFloat(inputAbono.value);
-    let honorarios = parseFloat(inputHonorarios.value);
-    let costas = parseFloat(inputCostas.value);
-    let cuotas = parseInt(inputCuotas.value);
-
-    if (isNaN(montoTotal) || isNaN(abono) || isNaN(honorarios) || isNaN(costas) || isNaN(cuotas)) {
-        alert('Por favor, ingresa números válidos.');
-        return;
-    }
-
-    calcularPagos(montoTotal, abono, honorarios, costas, cuotas);
-});
+btnCalcular.addEventListener('click', calcular);
 
 btnLimpiar.addEventListener('click', function() {
     inputMontoTotal.value = '';
@@ -36,6 +23,21 @@ btnLimpiar.addEventListener('click', function() {
     tablaAbono.querySelector('tbody').innerHTML = '';
     tablaPago.querySelector('tbody').innerHTML = '';
 });
+
+function calcular() {
+    let montoTotal = parseFloat(inputMontoTotal.value) || 0;
+    let abono = parseFloat(inputAbono.value) || 0;
+    let honorarios = parseFloat(inputHonorarios.value) || 0;
+    let costas = parseFloat(inputCostas.value) || 0;
+    let cuotas = parseInt(inputCuotas.value) || 1;
+
+    if (montoTotal === 0) {
+        alert('Por favor, ingresa un monto total válido.');
+        return;
+    }
+
+    calcularPagos(montoTotal, abono, honorarios, costas, cuotas);
+}
 
 function calcularPagos(montoTotal, abono, honorarios, costas, cuotas) {
     let porcentajeAbono = abono / montoTotal;
